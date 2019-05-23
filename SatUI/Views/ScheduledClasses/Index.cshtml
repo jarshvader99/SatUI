@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Sat.Data.EF.ScheduledClass>
+
+@{
+    ViewBag.Title = "Schedule Classes";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+{
+    <p>
+        @Html.ActionLink("Schedule New Class", "Create")
+    </p>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InstructorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnrollmentMax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cours.CourseName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstructorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentMax)
+            </td>
+            @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+            {
+                <td>
+                    @Html.ActionLink(item.Cours.CourseName, "Details", new { id = item.Cours.CourseID})
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cours.CourseName)
+                </td>
+            }
+
+            @if (Request.IsAuthenticated)
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledClassID })
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @:| @Html.ActionLink("Delete", "Delete", new { id = item.ScheduledClassID })
+                    }
+
+                </td>
+            }
+        </tr>
+
+    }
+
+</table>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Sat.Data.EF.Cours>
+
+@{
+    ViewBag.Title = "All Courses";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+{
+    <p>
+        @Html.ActionLink("Add New Course", "Create")
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Curriculum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsRequired)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+                {
+                    @Html.ActionLink(item.CourseName, "Details", new { id = item.CourseID })
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Curriculum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRequired)
+            </td>
+            @if (Request.IsAuthenticated)
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CourseID })
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @:|
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
+                    }
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>
