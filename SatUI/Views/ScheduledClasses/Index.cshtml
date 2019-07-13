@@ -4,84 +4,108 @@
     ViewBag.Title = "Schedule Classes";
 }
 
-<h2>@ViewBag.Title</h2>
+<div class="pageWrap">
+    <h2>@ViewBag.Title</h2>
 
-@if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
-{
-    <p>
-        @Html.ActionLink("Schedule New Class", "Create")
-    </p>
-}
+    @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+    {
+        <p>
+            @Html.ActionLink("Add New Class", "Create")
+        </p>
+    }
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.InstructorName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EnrollmentMax)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cours.CourseName)
-        </th>
-        <th></th>
-    </tr>
+
+    @*<tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InstructorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrollmentMax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cours.CourseName)
+            </th>
+            <th></th>
+        </tr>*@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstructorName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EnrollmentMax)
-            </td>
-            @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
-            {
-                <td>
-                    @Html.ActionLink(item.Cours.CourseName, "Details", new { id = item.Cours.CourseID})
-                </td>
-            }
-            else
-            {
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cours.CourseName)
-                </td>
-            }
+        var color = "";
+        switch (item.ScheduledClassID)
+        {
+            case 1:
+                color = "#7cbb00";
+                break;
+            case 2:
+                color = "#ffbb00";
+                break;
+            case 7:
+                color = "#a903b3";
+                break;
+            case 8:
+                color = "#ec4f13";
+                break;
+        }
 
-            @if (Request.IsAuthenticated)
-            {
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledClassID })
+        <div class="cardBox col-lg-12 col-sm-1">
+            <div class="span3">
+                <div class="well well-primary box" style="background-color:@color">
+                    <ul>
+                        <li>
+                            @Html.DisplayFor(modelItem => item.InstructorName)
+                        </li>
+                        <li>
+                            @Html.DisplayFor(modelItem => item.Location)
+                        </li>
+                        <li>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </li>
+                        <li>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </li>
+                        <li>
+                            @Html.DisplayFor(modelItem => item.EnrollmentMax)
+                        </li>
+                        @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+                {
+                            <li>
+                                @Html.ActionLink(item.Cours.CourseName, "Details", new { id = item.ScheduledClassID})
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                @Html.DisplayFor(modelItem => item.Cours.CourseName)
+                            </li>
+                        }
 
-                    @if (User.IsInRole("Admin"))
+                        @if (Request.IsAuthenticated)
+                {
+                            <li>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledClassID })
+
+                                @if (User.IsInRole("Admin"))
                     {
-                        @:| @Html.ActionLink("Delete", "Delete", new { id = item.ScheduledClassID })
+                                    @:| @Html.ActionLink("Delete", "Delete", new { id = item.ScheduledClassID })
                     }
 
-                </td>
-            }
-        </tr>
-
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
     }
 
-</table>
+
+</div>

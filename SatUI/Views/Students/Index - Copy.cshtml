@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Sat.Data.EF.Student>
+
+@{
+    ViewBag.Title = "All Students";
+}
+
+
+
+
+
+<div class="pageWrap">
+    <h2>@ViewBag.Title</h2>
+    @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+    {
+        <p>
+            @Html.ActionLink("Add New Student", "Create")
+        </p>
+    }
+
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameJoin)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNbr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressInfo)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.State)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ZipCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentStatus.StatusName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+                {
+                        @Html.ActionLink(item.NameJoin, "Details", new { id = item.StudentID })
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.NameJoin)
+                    }
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNbr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressInfo)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ZipCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhotoUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentStatus.StatusName)
+                </td>
+                @if (Request.IsAuthenticated)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.StudentID })
+
+                        @if (User.IsInRole("Admin"))
+                    {
+                            @:| @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+                    }
+
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>

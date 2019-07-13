@@ -8,9 +8,7 @@ namespace SatUI.Models
 {
     public class ContactViewModel
     {
-        //fields
 
-        //properties
         [StringLength(100, ErrorMessage = "* Less than 100 characters")]
         [Required(ErrorMessage = "* Required")]
         public string Name { get; set; }
@@ -27,8 +25,5 @@ namespace SatUI.Models
         [Required(ErrorMessage = "* Required")]
 
         public string Message { get; set; }
-        //ctors
-
-        //methods
     }
 }

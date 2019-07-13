@@ -4,103 +4,127 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="pageWrap">
 
-<div>
-    <h4>Student</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+    @{
+        var color = "";
+        switch (Model.StudentStatus.StatusName)
+        {
+            case "IsEnrolled":
+                color = "#7cbb00";
+                break;
+            case "IsGraduated":
+                color = "#ffbb00";
+                break;
+            case "IsTakingBreak":
+                color = "#a903b3";
+                break;
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            default:
+                break;
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+        <div class="col-lg-9">
+            <div class="well well-primary box" style="background-color:@color">
+                <h4>Student Details</h4>
+                <hr />
+                <img src="~/Content/assets/img/@Model.PhotoUrl" style="width:200px; height: 230px;" />
+                <ul>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNbr)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNbr)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.LastName)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.PhoneNbr)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StreetAddress)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.PhoneNbr)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.StreetAddress)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.Email)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.StreetAddress)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.StreetAddress)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.State)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.City)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ZipCode)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.City)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.ZipCode)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.State)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.State)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Country)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.ZipCode)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhotoUrl)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.ZipCode)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhotoUrl)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.Country)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StudentStatus.StatusName)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.Country)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.StudentStatus.StatusName)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.PhotoUrl)
+                    </li>
 
-    </dl>
+                    <li>
+                        @Html.DisplayFor(model => model.PhotoUrl)
+                    </li>
+
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.StudentStatus.StatusName)
+                    </li>
+
+                    <li>
+                        @Html.DisplayFor(model => model.StudentStatus.StatusName)
+                    </li>
+
+                </ul><br />
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

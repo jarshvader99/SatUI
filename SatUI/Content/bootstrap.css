@@ -765,7 +765,7 @@ pre code {
 
 .container:before,
 .container:after {
-  display: table;
+  /*display: table;*/
   content: " ";
 }
 
@@ -775,7 +775,7 @@ pre code {
 
 .container:before,
 .container:after {
-  display: table;
+  /*display: table;*/
   content: " ";
 }
 
@@ -790,7 +790,7 @@ pre code {
 
 .row:before,
 .row:after {
-  display: table;
+  /*display: table;*/
   content: " ";
 }
 
@@ -800,7 +800,7 @@ pre code {
 
 .row:before,
 .row:after {
-  display: table;
+  /*display: table;*/
   content: " ";
 }
 
@@ -1754,6 +1754,9 @@ textarea.form-control {
 
 .form-group {
   margin-bottom: 15px;
+      width: 50%;
+    padding: 5px;
+    margin: 5px;
 }
 
 .radio,

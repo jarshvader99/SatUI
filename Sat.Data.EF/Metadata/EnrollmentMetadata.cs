@@ -20,13 +20,12 @@ namespace Sat.Data.EF//.Metadata
     [MetadataType(typeof(EnrollmentMetadata))]
     public partial class Enrollment
     {
-        //we can create custom properties to represent combined / calculated fields for an object (record) in our database
-        //[Display(Name = "Ship Info")]
-        //public string ShipInfo
+        //[Display(Name = "Full Name")]
+        //public string NameJoin
         //{
         //    get
         //    {
-        //        return $"{ShipAddress} {ShipCity}, {ShipRegion}--{ShipCountry}";
+        //        return $"{} {ShipCity}";
         //    }
         //}
 

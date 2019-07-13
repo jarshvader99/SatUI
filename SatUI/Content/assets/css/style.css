@@ -8,6 +8,57 @@
 @import url('overwrite.css');
 @import url('boxtile.css');
 /* ====================================== */
+.sizer{
+    width: 75%;
+    padding: 5px;
+    margin: 5px;
+    
+}
+.logo {
+    width: 350px;
+}
+.deetsWrap {
+    margin: 0 auto;
+}
+.detailTitle {
+    text-decoration: underline;
+    font-weight:bold;
+}
+.cardBoxHT {
+    height: 275px;
+}
+.cardBoxUL {
+    text-align: left;
+}
+.cardBox li a {
+    font-weight: bold;
+
+}
+.cardBoxUL li a:hover{
+    color:yellow;
+}
+.cardBox {
+    width: 20%;
+    height: 250px;
+    text-align: center;
+    display: inline-table;
+}
+
+.confirmMessage {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 200px;
+    text-align: center;
+}
+
+.pageWrap{
+      width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 200px;
+    text-align: center;
+}
 
 .row {
 	margin-bottom:20px;
@@ -1361,6 +1412,7 @@ a.commentlink {
 footer {
 	padding-top:30px;
 	color:#f8f8f8;
+
 }
 
 
@@ -1381,10 +1433,10 @@ footer a:hover {
 }
 
 
-footer .verybottom {
+/*footer .verybottom {
 	padding-top:30px;
 	background:#0f0f0f;
-}
+}*/
 
 footer .nav-list li, footer .nav-list li a, footer .nav-list li.nav-header {
 	text-shadow:none;
@@ -1781,4 +1833,12 @@ ul.portfolio-area li {
 		text-align:center;
 	}
 
+}
+.pageWrapper {
+    
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 200px;
+    text-align: center;
 }

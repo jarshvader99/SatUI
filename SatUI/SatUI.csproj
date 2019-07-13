@@ -262,6 +262,7 @@
     <Content Include="Content\assets\img\icons\wp-icon.png" />
     <Content Include="Content\assets\img\icons\zoom_icon.png" />
     <Content Include="Content\assets\img\image_hover.png" />
+    <Content Include="Content\assets\img\joshprofile.jpg" />
     <Content Include="Content\assets\img\list\arrow.png" />
     <Content Include="Content\assets\img\list\check-dark.png" />
     <Content Include="Content\assets\img\list\check-white.png" />
@@ -307,6 +308,15 @@
     <Content Include="Content\assets\img\prettyPhoto\light_square\default_thumbnail.gif" />
     <Content Include="Content\assets\img\prettyPhoto\light_square\loader.gif" />
     <Content Include="Content\assets\img\prettyPhoto\light_square\sprite.png" />
+    <Content Include="Content\assets\img\profile1 - Copy.jpeg" />
+    <Content Include="Content\assets\img\profile2 - Copy.jpg" />
+    <Content Include="Content\assets\img\profile3 - Copy.jpg" />
+    <Content Include="Content\assets\img\profile4 - Copy.gif" />
+    <Content Include="Content\assets\img\profile5.png" />
+    <Content Include="Content\assets\img\profile6.jpg" />
+    <Content Include="Content\assets\img\profile7.jpg" />
+    <Content Include="Content\assets\img\profile9.jpeg" />
+    <Content Include="Content\assets\img\ridgemontlogo.png" />
     <Content Include="Content\assets\img\slide-arrow.png" />
     <Content Include="Content\assets\img\slides\arrows.png" />
     <Content Include="Content\assets\img\slides\camera\blank.gif" />
@@ -631,6 +641,8 @@
     <Content Include="Views\Cours\Edit.cshtml" />
     <Content Include="Views\Cours\Index.cshtml" />
     <Content Include="Views\Shared\_OriginalLayout.cshtml" />
+    <Content Include="Views\Home\ContactConfirmation.cshtml" />
+    <Content Include="Views\Students\Index - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -665,9 +677,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55748</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55748/</IISUrl>
+          <IISUrl>http://localhost:59074/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

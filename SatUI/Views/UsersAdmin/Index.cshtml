@@ -1,36 +1,60 @@
 ﻿@model IEnumerable<SatUI.Models.ApplicationUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Users";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
 
-        </th>
-    </tr>
-
+<div class="pageWrap">
+    <h2>@ViewBag.Title</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+        var color = "";
+        switch (item.EmailConfirmed)
+        {
+            case true:
+                color = "#7cbb00";
+                break;
+            //case "IsGraduated":
+            //    color = "#ffbb00";
+            //    break;
+            //case "IsTakingBreak":
+            //    color = "#a903b3";
+            //    break;
+
+            default:
+                break;
+
+        }
+        <div class="cardBox col-lg-12 col-sm-1">
+            <div span="3">
+                <div class="well well-primary box" style="background-color:@color">
+                    
+                    <ul>
+                        <li>
+                            @Html.DisplayNameFor(model => model.UserName)
+                        </li>
+                        <li>
+
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     }
 
-</table>
+</div>

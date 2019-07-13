@@ -1,36 +1,63 @@
 ﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Roles";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-
-        </th>
-    </tr>
-
+<div class="pageWrap">
+    <h2>@ViewBag.Title</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
+        var color = "";
+        switch (item.Name)
+        {
+            case "Admin":
+                color = "#7cbb00";
+                break;
+            case "Scheduling":
+                color = "#ffbb00";
+                break;
+            //case "IsTakingBreak":
+            //    color = "#a903b3";
+            //    break;
 
-</table>
+            default:
+                break;
+
+        }
+
+
+        <div class="cardBox col-lg-12">
+            <div span="3">
+                <div class="well well-primary box" style="background-color:@color">
+                   
+                    <ul>
+                        <li>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </li>
+                        <li>
+
+                        </li>
+                    </ul>
+
+
+                    <ul>
+                        <li>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

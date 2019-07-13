@@ -4,39 +4,63 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="pageWrap">
+    <h2>@ViewBag.Title</h2>
+    @{ 
+        
+            var color = "";
+            switch (Model.EnrollmentID)
+            {
+                case 1:
+                    color = "#7cbb00";
+                    break;
+                case 2:
+                    color = "#ffbb00";
+                    break;
+                case 7:
+                    color = "#a903b3";
+                    break;
+                case 8:
+                    color = "#ec4f13";
+                    break;
+            }
+       
+        <div class="col-lg-9">
+            <div class="well well-primary box" style="background-color:@color">
+                <h4>Enrollment</h4>
+                <hr />
+                <ul class="dl-horizontal">
+                   
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.EnrollmentDate)
+                    </li>
 
-<div>
-    <h4>Enrollment</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EnrollmentDate)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.EnrollmentDate)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.EnrollmentDate)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.ScheduledClass.InstructorName)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ScheduledClass.InstructorName)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.ScheduledClass.InstructorName)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.ScheduledClass.InstructorName)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.Student.FirstName)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Student.FirstName)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.Student.FirstName)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Student.FirstName)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EnrollmentID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                </ul>
+            </div>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.EnrollmentID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+        }
+    </div>

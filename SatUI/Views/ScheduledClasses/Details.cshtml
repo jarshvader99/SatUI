@@ -4,63 +4,86 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="pageWrap">
+    <h2>@ViewBag.Title</h2>
+    @{
+        var color = "";
+        switch (Model.ScheduledClassID)
+        {
+            case 1:
+                color = "#7cbb00";
+                break;
+            case 2:
+                color = "#ffbb00";
+                break;
+            case 7:
+                color = "#a903b3";
+                break;
+            case 8:
+                color = "#ec4f13";
+                break;
 
-<div>
-    <h4>ScheduledClass</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.InstructorName)
-        </dt>
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.InstructorName)
-        </dd>
+        <div class="col-lg-9">
+            <div class="well well-primary box" style="background-color:@color">
+                <h4>Class Details</h4>
+                <hr />
+                <ul class="dl-horizontal">
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.InstructorName)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.InstructorName)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.Location)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.Location)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.StartDate)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.StartDate)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.EndDate)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EnrollmentMax)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.EndDate)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.EnrollmentMax)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.EnrollmentMax)
+                    </li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Cours.CourseName)
-        </dt>
+                    <li>
+                        @Html.DisplayFor(model => model.EnrollmentMax)
+                    </li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cours.CourseName)
-        </dd>
+                    <li class="detailTitle">
+                        @Html.DisplayNameFor(model => model.Cours.CourseName)
+                    </li>
 
-    </dl>
+                    <li>
+                        @Html.DisplayFor(model => model.Cours.CourseName)
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ScheduledClassID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ScheduledClassID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
